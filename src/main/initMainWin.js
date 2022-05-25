@@ -2,6 +2,7 @@ const { BrowserWindow } = require('electron')
 const path = require('path')
 const { mainClient } = require('../utils/hot')
 const { vuePropjectUrl } = require('../utils/enum')
+const isDev = require('electron-is-dev');
 
 const createWindow = () => {
     const win = new BrowserWindow({
@@ -13,8 +14,11 @@ const createWindow = () => {
             contextIsolation: false
         }
     })
-    win.loadURL(vuePropjectUrl)
-    // win.loadFile(path.join(__dirname, '../pages/vue-project/dist/index.html'))
+    if(isDev) {
+        win.loadURL(vuePropjectUrl)
+    } else {
+        win.loadFile(path.join(__dirname, '../pages/vue-project/dist/index.html'))
+    }
 
     mainClient(win)
     return win
