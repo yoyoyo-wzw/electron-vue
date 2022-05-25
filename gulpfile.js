@@ -21,7 +21,7 @@ gulp.task('watch:electron', function () {
         electron.restart();
         done();
     });
-    gulp.watch(['./src/pages/renderer/**/*.{html,js,css}', './src/preload.js'], function (done){
+    gulp.watch(['./src/pages/**/*.{html,js,css,vue}', './src/preload.js'], function (done){
         electron.reload();
         done();
     });
