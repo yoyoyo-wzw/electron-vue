@@ -1,0 +1,24 @@
+{
+  "name": "electron",
+  "version": "0.0.1",
+  "description": "桌面级开发",
+  "main": "src/main.js",
+  "author": "wang",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "start:main": "electron .",
+    "hot": ".\\node_modules\\.bin\\gulp watch:electron",
+    "start:vue": "cd src/pages/vue-project && npm run dev",
+    "start:both": "concurrently \"npm run start:vue\" \"wait-on -l http://localhost:3000/src/main.js && npm run hot\"",
+    "install:both": "concurrently \"cd src/pages/vue-project && npm install\" \"yarn install\""
+  },
+  "devDependencies": {
+    "concurrently": "^7.2.1",
+    "electron": "^18.2.3",
+    "electron-connect": "^0.6.3",
+    "gulp": "^4.0.2",
+    "wait-on": "^6.0.1"
+  },
+  "dependencies": {}
+}
